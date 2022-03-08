@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+    <script>
+    function factorSum(num) {
+        let result = 0;
+        for (let i = 1; i < num; i++) {
+            if((num % i) == 0) {
+                result += i;
+            }
+        }
+        return result;
+    }
+    
+    function amicable(x, y) {
+        
+        if ((factorSum(x) == y) && (factorSum(y) == x)) {
+            //document.getElementById("answer").value = "yes";
+            return true;
+            
+        } else {
+            //document.getElementById("answer").value = "no";
+            return false;
+        }
+    }
+    function runProgram() {
+        var x, y;
+        x = parseInt(document.getElementById("first").value);
+        y = parseInt(document.getElementById("second").value);
+        if(amicable(x,y)) {
+            document.write("The numbers: " + x + " and " + y + " are amicable<br />");
+            
+        } else {
+            document.write("The numbers: " + x + " and " + y + " are not amicable<br />");
+        }
+        getFactors(x);
+        getFactors(y);
+    }
+    function getFactors(num) {
+        var arr = [];
+        let index = 0;
+        for (let i = 1; i < num; i++) {
+            if((num % i) == 0) {
+                arr[index] = i;
+                index++;
+            }
+        }
+        document.write("The factors of " + num + " are: ");
+        for (let i = 0; i < arr.length; i++) {
+            document.write(arr[i] + " ");
+        }
+        document.write("<br />");
+    }
+    </script>
+    </head>
+    <body>
+        <p>First Number: <input id="first"></p>
+        <p>Second Number: <input id="second"></p>
+        <button onclick="runProgram()">Determine if Amicable</button>
+    </body>
+</html>
